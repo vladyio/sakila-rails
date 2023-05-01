@@ -83,3 +83,44 @@ Then in model:
 class Language < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 ```
+
+### Create `Film`
+
+First, generate: `rails generate model Film`
+
+Then in migration:
+
+```ruby
+  def change
+    create_enum :rating, %w[G PG PG-13 R NC-17]
+
+    create_table :films do |t|
+      t.string :title, null: false
+      t.text :description
+      t.date :release_year
+      t.integer :rental_duration, null: false
+      t.decimal :rantal_rate, precision: 4, scale: 2, null: false
+      t.integer :length, limit: 3
+      t.decimal :replacement_cost, precision: 5, scale: 2, null: false
+      t.enum :rating, enum_type: 'rating', default: 'G'
+      t.string :special_features, array: true
+
+      t.timestamps
+```
+Another migration to reference `language_id` in `Film`:
+
+```ruby
+class AddLanguageToFilm < ActiveRecord::Migration[7.0]
+  def change
+    add_reference :films, :language, foreign_key: true
+```
+
+Then in `Film` model:
+
+```ruby
+class Film < ApplicationRecord
+  has_one :language
+
+  validates :rental_rate, :rental_duration, :replacement_cost,
+            :title, :language_id, presence: true
+```
