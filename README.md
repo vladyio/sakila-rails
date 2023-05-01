@@ -149,3 +149,28 @@ class FilmActor < ApplicationRecord
 
   validates :film, :actor, presence: true
 ```
+
+### Create `FilmCategory`
+
+First, generate: `rails generate model FilmCategory`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :film_categories do |t|
+      t.references :film, null: false, foreign_key: true
+      t.references :category, null: false, foreign_key: true
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class FilmCategory < ApplicationRecord
+  belongs_to :film
+  belongs_to :category
+
+  validates :film, :category, presence: true
+```
