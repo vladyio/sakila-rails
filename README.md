@@ -303,3 +303,41 @@ class City < ApplicationRecord
 
   validates :city, presence: true, uniqueness: true
 ```
+
+### Create `Customer`
+
+First, generate: `rails generate model Customer`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :customers do |t|
+      t.string :first_name, null: false, limit: 45
+      t.string :last_name, null: false, limit: 45
+      t.string :email, limit: 50
+      t.references :address, null: false, foreign_key: true
+      t.integer :active
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class Customer < ApplicationRecord
+  belongs_to :address
+
+  validates :first_name, :last_name, presence: true
+  validates :email, length: { maximum: 50 }
+```
+
+### Bind `Customer` and `Address`
+
+In `models/address.rb`:
+
+```diff
+class Address < ApplicationRecord
+  belongs_to :city
++ has_many :customers
+```
