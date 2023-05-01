@@ -6,7 +6,7 @@ Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://
 
 ## Step by step implementation:
 
-### Create `Actors`
+### Create `Actor`
 
 First, generate: `rails generate model Actor`
 
@@ -42,7 +42,7 @@ Then in migration:
 
 ```ruby
   def change
-    create_table :category do |t|
+    create_table :categories do |t|
       t.string :name, null: false
 
       t.timestamps
@@ -59,3 +59,27 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 ```
 
+### Create `Language`
+
+First, generate: `rails generate model Language`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :languages do |t|
+      t.string :name, null: false
+
+      t.timestamps
+    end
+
+    add_index :categories, :name, unique: true
+  end
+```
+
+Then in model:
+
+```ruby
+class Language < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+```
