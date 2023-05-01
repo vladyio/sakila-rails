@@ -200,3 +200,66 @@ class Film < ApplicationRecord
             :title, :language_id, presence: true
 end
 ```
+
+### Create `Country`
+
+First, generate: `rails generate model Country`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :countries do |t|
+      t.string :country, null: false
+
+      t.timestamps
+    end
+
+    add_index :countries, :country, unique: true
+```
+
+Then in model:
+
+```ruby
+class Country < ApplicationRecord
+  validates :country, presence: true, uniqueness: true
+```
+
+### Create `City`
+
+First, generate: `rails generate model City`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :cities do |t|
+      t.string :city
+      t.references :country, null: false, foreign_key: true
+
+      t.timestamps
+    end
+
+    add_index :cities, :city, unique: true
+```
+
+Then in model:
+
+```ruby
+class City < ApplicationRecord
+  belongs_to :country
+
+  validates :city, presence: true, uniqueness: true
+```
+
+### Bind `City` and `Country`
+
+In `models/country.rb`:
+
+```diff
+class Country < ApplicationRecord
++ has_many :cities
+
+  validates :country, presence: true, uniqueness: true
+end
+```
