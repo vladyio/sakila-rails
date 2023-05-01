@@ -174,3 +174,29 @@ class FilmCategory < ApplicationRecord
 
   validates :film, :category, presence: true
 ```
+
+### Bind `Films` with `Actors`, `Films` with `Categories`
+
+In `models/actor.rb`:
+
+```diff
+class Actor < ApplicationRecord
++ has_many :films, through: :film_actors
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+end
+```
+
+In `models/film.rb`:
+
+```diff
+class Film < ApplicationRecord
+  has_one :language
++ has_many :categories, through: :film_categories
++ has_many :actors, through: :film_actors
+
+  validates :rental_rate, :rental_duration, :replacement_cost,
+            :title, :language_id, presence: true
+end
+```
