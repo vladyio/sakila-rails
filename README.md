@@ -2,6 +2,8 @@
 
 Based on a schema from [Learning SQL by Alan Beaulieu](http://shop.oreilly.com/product/9780596007270.do).
 
+Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://github.com/fspacek/docker-postgres-sakila)
+
 ## Migration steps:
 
 ### Create `Actors`
@@ -31,4 +33,3 @@ class Actor < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 ```
-
