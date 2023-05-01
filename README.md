@@ -4,7 +4,7 @@ Based on a schema from [Learning SQL by Alan Beaulieu](http://shop.oreilly.com/p
 
 Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://github.com/fspacek/docker-postgres-sakila)
 
-## Migration steps:
+## Step by step implementation:
 
 ### Create `Actors`
 
@@ -33,3 +33,29 @@ class Actor < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 ```
+
+### Create `Category`
+
+First, generate: `rails generate model Category`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :category do |t|
+      t.string :name, null: false
+
+      t.timestamps
+    end
+
+    add_index :categories, :name, unique: true
+  end
+```
+
+Then in model:
+
+```ruby
+class Category < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+```
+
