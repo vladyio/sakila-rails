@@ -124,3 +124,28 @@ class Film < ApplicationRecord
   validates :rental_rate, :rental_duration, :replacement_cost,
             :title, :language_id, presence: true
 ```
+
+### Create `FilmActor`
+
+First, generate: `rails generate model FilmActor`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :film_actors do |t|
+      t.references :film, null: false, foreign_key: true
+      t.references :actor, null: false, foreign_key: true
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class FilmActor < ApplicationRecord
+  belongs_to :film
+  belongs_to :actor
+
+  validates :film, :actor, presence: true
+```
