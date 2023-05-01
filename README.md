@@ -1,8 +1,12 @@
 # Sakila database Rails application
 
-Based on a schema from [Learning SQL by Alan Beaulieu](http://shop.oreilly.com/product/9780596007270.do).
+Based on a simplified schema from a great book [Learning SQL by Alan Beaulieu](http://shop.oreilly.com/product/9780596007270.do) (original database is [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/))
 
 Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://github.com/fspacek/docker-postgres-sakila)
+
+# Motivation
+
+The goal was to create a Rails/Postgres application with a schema based on the [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), but (probably) a more simple version of it.
 
 ## Step by step implementation:
 
