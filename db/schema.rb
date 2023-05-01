@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_202452) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_203426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_202452) do
     t.datetime "updated_at", null: false
     t.index ["first_name"], name: "index_actors_on_first_name"
     t.index ["last_name"], name: "index_actors_on_last_name"
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "address", limit: 50, null: false
+    t.string "address2", limit: 50
+    t.string "district", limit: 20, null: false
+    t.bigint "city_id", null: false
+    t.string "postal_code", limit: 10
+    t.string "phone", limit: 20, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_addresses_on_city_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -91,6 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_202452) do
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
+  add_foreign_key "addresses", "cities"
   add_foreign_key "cities", "countries"
   add_foreign_key "film_actors", "actors"
   add_foreign_key "film_actors", "films"

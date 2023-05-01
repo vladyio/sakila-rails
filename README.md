@@ -263,3 +263,43 @@ class Country < ApplicationRecord
   validates :country, presence: true, uniqueness: true
 end
 ```
+
+### Create `Address`
+
+First, generate: `rails generate model Address`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :addresses do |t|
+      t.string :address, null: false, limit: 50
+      t.string :address2, limit: 50
+      t.string :district, null: false, limit: 20
+      t.references :city, null: false, foreign_key: true
+      t.string :postal_code, limit: 10
+      t.string :phone, null: false, limit: 20
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class Address < ApplicationRecord
+  belongs_to :city
+
+  validates :address, :district, :phone, presence: true
+```
+
+### Bind `Address` and `City`
+
+In `models/city.rb`:
+
+```diff
+class City < ApplicationRecord
+  belongs_to :country
++ has_many :addresses
+
+  validates :city, presence: true, uniqueness: true
+```
