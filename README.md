@@ -1,24 +1,34 @@
-# README
+# Sakila database Rails application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Based on a schema from [Learning SQL by Alan Beaulieu](http://shop.oreilly.com/product/9780596007270.do).
 
-Things you may want to cover:
+## Migration steps:
 
-* Ruby version
+### Create `Actors`
 
-* System dependencies
+First, generate: `rails generate model Actor`
 
-* Configuration
+Then in migration:
 
-* Database creation
+```ruby
+  def change
+    create_table :actors do |t|
+      t.string :first_name, null: false
+      t.string :last_name, null: false
 
-* Database initialization
+      t.timestamps
+    end
 
-* How to run the test suite
+    add_index :actors, :first_name
+    add_index :actors, :last_name
+  end
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then in model:
 
-* Deployment instructions
+```ruby
+class Actor < ApplicationRecord
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+```
 
-* ...
