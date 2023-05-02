@@ -53,6 +53,30 @@ None are implemented currently.
 
 # Step by step implementation:
 
+1. [Create `Actor`](#create-actor)
+2. [Create `Category`](#create-category)
+3. [Create `Language`](#create-language)
+4. [Create `Film`](#create-film)
+5. [Create `FilmActor`](#create-filmactor)
+6. [Create `FilmCategory`](#create-filmcategory)
+7. [Bind `Films` with `Actors`, `Films` with `Categories`](#bind-films-with-actors-films-with-categories)
+8. [Create `Country`](#create-country)
+9. [Create `City`](#create-city)
+10. [Bind `City` and `Country`](#bind-city-and-country)
+11. [Create `Address`](#create-address)
+12. [Bind `Address` and `City`](#bind-address-and-city)
+13. [Create `Customer`](#create-customer)
+14. [Bind `Customer` and `Address`](#bind-customer-and-address)
+15. [Create `Inventory`](#create-inventory)
+16. [Set `Language`.`name` limit to 20](#set-languagename-limit-to-20)
+17. [Create `Rental`](#create-rental)
+18. [Create `Payment`](#create-payment)
+19. [Bind `Payment` and `Customer`](#bind-payment-and-customer)
+20. [Create `Store`](#create-store)
+21. [Create `Staff`](#create-staff)
+22. [Add `manager_staff` to `Store`](#add-manager_staff-to-store)
+23. [Add `original_language_id` to `Film`](#add-original_language_id-to-film)
+
 ### Create `Actor`
 
 First, generate: `rails generate model Actor`
