@@ -13,6 +13,7 @@ The goal was to create a Rails/Postgres application with a schema based on the [
 1. `bundle install`
 2. `rails db:create`
 3. `rails db:migrate`
+4. `rails db:seed`
 
 # Current status
 
