@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_094145) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_095546) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -162,7 +162,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_094145) do
     t.bigint "address_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "manager_staff_id"
     t.index ["address_id"], name: "index_stores_on_address_id"
+    t.index ["manager_staff_id"], name: "index_stores_on_manager_staff_id"
   end
 
   add_foreign_key "addresses", "cities"
@@ -181,4 +183,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_094145) do
   add_foreign_key "staff", "addresses"
   add_foreign_key "staff", "stores"
   add_foreign_key "stores", "addresses"
+  add_foreign_key "stores", "staff", column: "manager_staff_id"
 end

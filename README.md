@@ -534,3 +534,23 @@ class Staff < ApplicationRecord
   validates :username, presence: true, length: { maximum: 16 }
   validates :password, length: { maximum: 40 }
 ```
+
+### Add `manager_staff` to `Store`:
+
+First, generate `rails g migration AddManagerStaffToStore`
+
+Then in migration:
+
+```ruby
+class AddManagerStaffToStore < ActiveRecord::Migration[7.0]
+  def change
+    add_reference :stores, :manager_staff, index: true, foreign_key: { to_table: :staff }
+```
+
+In `models/store.rb`:
+
+```diff
+class Store < ApplicationRecord
+  belongs_to :address
++ has_one :manager_staff, class_name: 'Staff', foreign_key: :manager_staff
+```
