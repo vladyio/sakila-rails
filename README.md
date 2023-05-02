@@ -621,3 +621,11 @@ I made a couple of typos in `films` table that needed to be fixed:
 ```ruby
     rename_column :films, :rantal_rate, :rental_rate
 ```
+
+### Remove uniqueness index from `city`
+
+Put by mistake, to remove:
+
+```ruby
+    remove_index :cities, :city
+```

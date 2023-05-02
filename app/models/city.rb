@@ -10,7 +10,6 @@
 #
 # Indexes
 #
-#  index_cities_on_city        (city) UNIQUE
 #  index_cities_on_country_id  (country_id)
 #
 # Foreign Keys
@@ -21,5 +20,5 @@ class City < ApplicationRecord
   belongs_to :country
   has_many :addresses
 
-  validates :city, presence: true, uniqueness: true
+  validates :city, presence: true
 end
