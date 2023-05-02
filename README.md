@@ -498,3 +498,39 @@ Then in model:
 class Store < ApplicationRecord
   belongs_to :address
 ```
+
+### Create `Staff`
+
+First, generate: `rails generate model Staff`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :staff do |t|
+      t.string :first_name, null: false, limit: 45
+      t.string :last_name, null: false, limit: 45
+      t.references :address, null: false, foreign_key: true
+      t.string :email, limit: 50
+      t.references :store, null: false, foreign_key: true
+      t.boolean :active, null: false
+      t.string :username, null: false, limit: 16
+      t.string :password, limit: 40
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class Staff < ApplicationRecord
+  self.table_name = 'staff'
+
+  belongs_to :address
+  belongs_to :store
+
+  validates :first_name, :last_name, presence: true, length: { maximum: 45 }
+  validates :email, length: { maximum: 50 }
+  validates :username, presence: true, length: { maximum: 16 }
+  validates :password, length: { maximum: 40 }
+```

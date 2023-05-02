@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_093618) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_094145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,6 +143,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_093618) do
     t.index ["inventory_id"], name: "index_rentals_on_inventory_id"
   end
 
+  create_table "staff", force: :cascade do |t|
+    t.string "first_name", limit: 45, null: false
+    t.string "last_name", limit: 45, null: false
+    t.bigint "address_id", null: false
+    t.string "email", limit: 50
+    t.bigint "store_id", null: false
+    t.boolean "active", null: false
+    t.string "username", limit: 16, null: false
+    t.string "password", limit: 40
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_staff_on_address_id"
+    t.index ["store_id"], name: "index_staff_on_store_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.bigint "address_id", null: false
     t.datetime "created_at", null: false
@@ -163,5 +178,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_093618) do
   add_foreign_key "payments", "rentals"
   add_foreign_key "rentals", "customers"
   add_foreign_key "rentals", "inventories"
+  add_foreign_key "staff", "addresses"
+  add_foreign_key "staff", "stores"
   add_foreign_key "stores", "addresses"
 end
