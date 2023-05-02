@@ -406,9 +406,43 @@ Then in migration:
 Then in model:
 
 ```ruby
-class Rental < ApplicationRecord
-  belongs_to :inventory
-  belongs_to :customer
+class Inventory < ApplicationRecord
+  belongs_to :film
+```
 
-  validates :rental_date, presence: true
+### Create `Payment`
+
+First, generate: `rails generate model Payment`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :payments do |t|
+      t.references :customer, null: false, foreign_key: true
+      t.references :rental, null: false, foreign_key: true
+      t.decimal :amount, precision: 5, scale: 2, null: false
+      t.timestamp :payment_date, null: false
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class Payment < ApplicationRecord
+  belongs_to :customer
+  belongs_to :rental
+
+  validates :amount, :payment_date, presence: true
+```
+
+### Bind `Payment` and `Customer`
+
+In `models/customer.rb`:
+
+```diff
+class Customer < ApplicationRecord
+  belongs_to :address
++ has_many :payments
 ```

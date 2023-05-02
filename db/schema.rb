@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_084338) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_085551) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,6 +121,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_084338) do
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "rental_id", null: false
+    t.decimal "amount", precision: 5, scale: 2
+    t.datetime "payment_date", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_payments_on_customer_id"
+    t.index ["rental_id"], name: "index_payments_on_rental_id"
+  end
+
   create_table "rentals", force: :cascade do |t|
     t.datetime "rental_date", precision: nil, null: false
     t.bigint "inventory_id", null: false
@@ -141,6 +152,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_084338) do
   add_foreign_key "film_categories", "films"
   add_foreign_key "films", "languages"
   add_foreign_key "inventories", "films"
+  add_foreign_key "payments", "customers"
+  add_foreign_key "payments", "rentals"
   add_foreign_key "rentals", "customers"
   add_foreign_key "rentals", "inventories"
 end
