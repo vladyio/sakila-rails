@@ -16,8 +16,14 @@ The goal was to create a Rails/Postgres application with a schema based on the [
 
 # Current status
 
+**ⓘ** **Important**: table names are singualar (`actor`, `store`) in the original database, but
+plural in the project (`actors`, `stores`)
+
 **ⓘ** **Important**: primary keys in the original database
 look like `actor.actor_id`, and in this project they look like `actor.id`.
+
+**ⓘ** **Important**: tables only have `last_update` field in the original database, but in this project
+I use `created_at`/`updated_at`.
 
 ## Tables (models):
 
