@@ -477,3 +477,24 @@ class Customer < ApplicationRecord
   belongs_to :address
 + has_many :payments
 ```
+
+### Create `Store`
+
+First, generate: `rails generate model Store`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :stores do |t|
+      t.references :address, null: false, foreign_key: true
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class Store < ApplicationRecord
+  belongs_to :address
+```
