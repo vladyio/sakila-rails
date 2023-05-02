@@ -3,3 +3,4 @@ def seed_file(filename)
 end
 
 load seed_file('actor')
+load seed_file('category')
