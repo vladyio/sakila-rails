@@ -10,6 +10,9 @@ The goal was to create a Rails/Postgres application with a schema based on the [
 
 # Current status
 
+<font color="yellow">ⓘ</font> **Important**: primary keys in the original database
+look like `actor.actor_id`, and in this project they look like `actor.id`.
+
 ## Tables (models):
 
 | Implemented      | Not implemented  |
