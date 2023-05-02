@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_190919) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_191620) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_190919) do
     t.text "description"
     t.date "release_year"
     t.integer "rental_duration", null: false
-    t.decimal "rantal_rate", precision: 4, scale: 2, null: false
+    t.decimal "rental_rate", precision: 4, scale: 2, null: false
     t.integer "length"
     t.decimal "replacement_cost", precision: 5, scale: 2, null: false
     t.enum "rating", default: "G", enum_type: "rating"

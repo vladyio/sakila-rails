@@ -5,10 +5,10 @@
 #  id                   :bigint           not null, primary key
 #  description          :text
 #  length               :integer
-#  rantal_rate          :decimal(4, 2)    not null
 #  rating               :enum             default("G")
 #  release_year         :date
 #  rental_duration      :integer          not null
+#  rental_rate          :decimal(4, 2)    not null
 #  replacement_cost     :decimal(5, 2)    not null
 #  special_features     :string           is an Array
 #  title                :string           not null
