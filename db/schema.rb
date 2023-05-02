@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_204529) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_082448) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -107,6 +107,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_204529) do
     t.index ["language_id"], name: "index_films_on_language_id"
   end
 
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "film_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_inventories_on_film_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -122,4 +129,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_204529) do
   add_foreign_key "film_categories", "categories"
   add_foreign_key "film_categories", "films"
   add_foreign_key "films", "languages"
+  add_foreign_key "inventories", "films"
 end

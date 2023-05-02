@@ -345,3 +345,26 @@ class Address < ApplicationRecord
   belongs_to :city
 + has_many :customers
 ```
+
+### Create `Inventory`
+
+First, generate: `rails generate model Inventory`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :inventories do |t|
+      t.references :film, null: false, foreign_key: true
+
+      t.timestamps
+    end
+```
+
+Then in model:
+
+```ruby
+class Inventory < ApplicationRecord
+  belongs_to :film
+```
+
