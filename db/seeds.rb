@@ -4,3 +4,4 @@ end
 
 load seed_file('actor')
 load seed_file('category')
+load seed_file('language')
