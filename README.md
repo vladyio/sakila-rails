@@ -368,3 +368,20 @@ class Inventory < ApplicationRecord
   belongs_to :film
 ```
 
+### Set `Language`.`name` limit to 20
+
+First, generate: `rails g migration ChangeLanguageNameLengthLimit`
+
+Then in migration:
+
+```ruby
+  def change
+    change_column :languages, :name, :string, limit: 20
+```
+
+In `models/language.rb`:
+
+```diff
+class Language < ApplicationRecord
++ validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+```

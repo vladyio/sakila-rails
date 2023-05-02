@@ -3,7 +3,7 @@
 # Table name: languages
 #
 #  id         :bigint           not null, primary key
-#  name       :string           not null
+#  name       :string(20)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -12,5 +12,5 @@
 #  index_languages_on_name  (name) UNIQUE
 #
 class Language < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
 end
