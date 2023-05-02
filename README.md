@@ -8,6 +8,12 @@ Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://
 
 The goal was to create a Rails/Postgres application with a schema based on the [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), but (probably) a more simple version of it.
 
+# Setup
+
+1. `bundle install`
+2. `rails db:create`
+3. `rails db:migrate`
+
 # Current status
 
 **ⓘ** **Important**: primary keys in the original database
