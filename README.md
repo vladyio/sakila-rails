@@ -8,7 +8,35 @@ Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://
 
 The goal was to create a Rails/Postgres application with a schema based on the [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), but (probably) a more simple version of it.
 
-## Step by step implementation:
+# Current status
+
+## Tables (models):
+
+| Implemented      | Not implemented  |
+| ---------------- | ---------------- |
+| actors           | staff            |
+| addresses        | store            |
+| categories       | |
+| cities           | |
+| countries        | |
+| customers        | |
+| film_actors      | |
+| film_categories  | |
+| films            | |
+| inventories      | |
+| languages        | |
+| payments         | |
+| rentals          | |
+
+## Views
+
+None are implemented currently.
+
+## Procedures & functions
+
+None are implemented currently.
+
+# Step by step implementation:
 
 ### Create `Actor`
 
