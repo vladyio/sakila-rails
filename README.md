@@ -10,15 +10,18 @@ The goal was to create a Rails/Postgres application with a schema based on the [
 
 # Current status
 
-<font color="yellow">ⓘ</font> **Important**: primary keys in the original database
+**ⓘ** **Important**: primary keys in the original database
 look like `actor.actor_id`, and in this project they look like `actor.id`.
 
 ## Tables (models):
 
+**ⓘ** **Important**: some `belongs_to` and `has_many`
+could be missing due to my inattention, but I'm in process of figuring it out.
+
 | Implemented      | Not implemented  |
 | ---------------- | ---------------- |
-| actors           | staff            |
-| addresses        | store            |
+| actors           | |
+| addresses        | |
 | categories       | |
 | cities           | |
 | countries        | |
@@ -30,6 +33,8 @@ look like `actor.actor_id`, and in this project they look like `actor.id`.
 | languages        | |
 | payments         | |
 | rentals          | |
+| staff            | |
+| store            | |
 
 ## Views
 
