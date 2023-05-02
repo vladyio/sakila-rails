@@ -25,31 +25,30 @@ look like `actor.actor_id`, and in this project they look like `actor.id`.
 could be missing due to my inattention, but I'm in process of figuring it out.
 (reference: [Sakila Sample Database  /  Structure  /  Tables](https://dev.mysql.com/doc/sakila/en/sakila-structure-tables.html))
 
-| Implemented      | Not implemented  |
-| ---------------- | ---------------- |
-| actors           | |
-| addresses        | |
-| categories       | |
-| cities           | |
-| countries        | |
-| customers        | |
-| film_actors      | |
-| film_categories  | |
-| films            | |
-| inventories      | |
-| languages        | |
-| payments         | |
-| rentals          | |
-| staff            | |
-| store            | |
+| Implemented (all done)|
+| ---------------- |
+| actors           |
+| addresses        |
+| categories       |
+| cities           |
+| countries        |
+| customers        |
+| film_actors      |
+| film_categories  |
+| films            |
+| inventories      |
+| languages        |
+| payments         |
+| rentals          |
+| staff            |
+| store            |
 
-## Views
+## TODO:
 
-None are implemented currently.
-
-## Procedures & functions
-
-None are implemented currently.
+- [ ] Views
+- [ ] Procedures / functions
+- [ ] Triggers (not sure about doing it yet)
+- [ ] Check `ON UPDATE` and `ON DELETE` for existence
 
 # Step by step implementation:
 
