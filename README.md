@@ -17,6 +17,7 @@ look like `actor.actor_id`, and in this project they look like `actor.id`.
 
 **ⓘ** **Important**: some `belongs_to` and `has_many`
 could be missing due to my inattention, but I'm in process of figuring it out.
+(reference: [Sakila Sample Database  /  Structure  /  Tables](https://dev.mysql.com/doc/sakila/en/sakila-structure-tables.html))
 
 | Implemented      | Not implemented  |
 | ---------------- | ---------------- |
