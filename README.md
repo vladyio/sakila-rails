@@ -82,6 +82,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 21. [Create `Staff`](#create-staff)
 22. [Add `manager_staff` to `Store`](#add-manager_staff-to-store)
 23. [Add `original_language_id` to `Film`](#add-original_language_id-to-film)
+24. [Rename `original_language_id` and `rental_rate` columns](#rename-original_language_id-and-rental_rate-columns)
 
 ### Create `Actor`
 
@@ -607,4 +608,16 @@ Then in migration:
 class AddOriginalLanguageIdToFilm < ActiveRecord::Migration[7.0]
   def change
     add_reference :films, :original_language_id, foreign_key: { to_table: :languages }
+```
+
+### Rename `original_language_id` and `rental_rate` columns
+
+I made a couple of typos in `films` table that needed to be fixed:
+
+```ruby
+    rename_column :films, :original_language_id_id, :original_language_id
+```
+
+```ruby
+    rename_column :films, :rantal_rate, :rental_rate
 ```
