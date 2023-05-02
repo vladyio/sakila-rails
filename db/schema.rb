@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_095546) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_02_100931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,7 +104,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_095546) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "language_id"
+    t.bigint "original_language_id_id"
     t.index ["language_id"], name: "index_films_on_language_id"
+    t.index ["original_language_id_id"], name: "index_films_on_original_language_id_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -175,6 +177,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_095546) do
   add_foreign_key "film_categories", "categories"
   add_foreign_key "film_categories", "films"
   add_foreign_key "films", "languages"
+  add_foreign_key "films", "languages", column: "original_language_id_id"
   add_foreign_key "inventories", "films"
   add_foreign_key "payments", "customers"
   add_foreign_key "payments", "rentals"

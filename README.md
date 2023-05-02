@@ -559,3 +559,15 @@ class Store < ApplicationRecord
   belongs_to :address
 + has_one :manager_staff, class_name: 'Staff', foreign_key: :manager_staff
 ```
+
+### Add `original_language_id` to `Film`:
+
+First, generate `rails g migration AddOriginalLanguageIdToFilm`
+
+Then in migration:
+
+```ruby
+class AddOriginalLanguageIdToFilm < ActiveRecord::Migration[7.0]
+  def change
+    add_reference :films, :original_language_id, foreign_key: { to_table: :languages }
+```
