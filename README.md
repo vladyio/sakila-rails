@@ -385,3 +385,30 @@ In `models/language.rb`:
 class Language < ApplicationRecord
 + validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
 ```
+
+### Create `Rental`
+
+First, generate: `rails generate model Rental`
+
+Then in migration:
+
+```ruby
+  def change
+    create_table :rentals do |t|
+      t.timestamp :rental_date, null: false
+      t.references :inventory, null: false, foreign_key: true
+      t.references :customer, null: false, foreign_key: true
+      t.timestamp :return_date
+
+      t.timestamps
+```
+
+Then in model:
+
+```ruby
+class Rental < ApplicationRecord
+  belongs_to :inventory
+  belongs_to :customer
+
+  validates :rental_date, presence: true
+```
