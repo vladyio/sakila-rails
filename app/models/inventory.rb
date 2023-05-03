@@ -15,8 +15,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (film_id => films.id)
-#  fk_rails_...  (store_id => stores.id)
+#  fk_rails_...  (film_id => films.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (store_id => stores.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class Inventory < ApplicationRecord
   belongs_to :film
