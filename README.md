@@ -49,7 +49,7 @@ I use `created_at`/`updated_at`.
 - [ ] Views
 - [ ] Procedures / functions
 - [ ] Triggers (not sure about doing it yet)
-- [ ] Check `ON UPDATE` and `ON DELETE` for existence
+- [x] Check `ON UPDATE` and `ON DELETE` for existence
 - [x] Tables & Rails models
 
 <details>
