@@ -87,6 +87,10 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 26. [Add `store_id` to `Inventory`](#add-store_id-to-inventory)
 27. [Add `staff_id` to `Rentals`](#add-staff_id-to-rentals)
 28. [Add `staff_id` to `Payments`](#add-staff_id-to-payments)
+29. [Fix `Film <-> Actor` associations in models](#fix-film---actor-associations-in-models)
+30. [Fix `Film <-> Category` associations in models](#fix-film---category-associations-in-models)
+31. [Fix `Film <-> Language` associations in models](#fix-language---film-associations-in-models)
+32. [Fix `Store <-> Staff` associations in models](#fix-store---staff-associations-in-models)
 
 ### Create `Actor`
 
@@ -659,4 +663,57 @@ Missed a reference of `store_id` in `customers`:
 
 ```ruby
   add_reference :payments, :staff, null: false, foreign_key: { to_table: :staff }
+```
+
+### Fix `Film <-> Actor` associations in models
+
+In `models/actor.rb`:
+
+```diff
+class Actor < ApplicationRecord
++ has_many :film_actors
+  has_many :films, through: :film_actors
+```
+
+In `models/film.rb`:
+
+```diff
+class Film < ApplicationRecord
+  # ...
++ has_many :film_actors
+  has_many :actors, through: :film_actors
+```
+
+### Fix `Film <-> Category` associations in models
+
+In `models/film.rb`:
+
+```diff
++ has_many :film_categories
+```
+
+In `models/category.rb`:
+
+```diff
++ has_many :film_categories
++ has_many :films, through: :film_categories
+```
+
+### Fix `Language <-> Film` associations in models
+
+In `models/film.rb`:
+
+```diff
+- has_one :language
++ belongs_to :language
+```
+
+### Fix `Store <-> Staff` associations in models
+
+In `models/store.rb`:
+
+```diff
+- has_one :manager_staff, class_name: 'Staff', foreign_key: :manager_staff
++ belongs_to :manager_staff, class_name: 'Staff', foreign_key: :manager_staff_id
++ has_many :staff
 ```
