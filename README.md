@@ -95,6 +95,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   32. [Fix `Store <-> Staff` associations in models](#fix-store---staff-associations-in-models)
   33. [Cross-reference `Store` and `Customer`](#cross-reference-store-and-customer)
   34. [Cross-reference `Inventory` with `Store` and `Rental`](#cross-reference-inventory-with-store-and-rental)
+  35. [Cross-reference `Payment` with `Rental` and `Staff`](#cross-reference-payment-with-rental-and-staff)
 
   ### Create `Actor`
 
@@ -749,5 +750,25 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 
   ```diff
   +  has_many :inventories
+  ```
+
+  ### Cross-reference `Payment` with `Rental` and `Staff`
+
+  In `models/rental.rb`:
+
+  ```diff
+  + has_many :payments
+  ```
+
+  In `models/staff.rb`:
+
+  ```diff
+  + has_many :payments
+  ```
+
+  In `models/payments`:
+
+  ```diff
+  + belongs_to :staff
   ```
 </details>

@@ -29,6 +29,7 @@ class Staff < ApplicationRecord
 
   belongs_to :address
   belongs_to :store
+  has_many :payments
 
   validates :first_name, :last_name, presence: true, length: { maximum: 45 }
   validates :email, length: { maximum: 50 }

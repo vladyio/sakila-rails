@@ -26,6 +26,7 @@
 class Rental < ApplicationRecord
   belongs_to :inventory
   belongs_to :customer
+  has_many :payments
 
   validates :rental_date, presence: true
 end
