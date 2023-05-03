@@ -29,6 +29,7 @@
 #
 class Film < ApplicationRecord
   has_one :language
+  has_many :film_categories
   has_many :categories, through: :film_categories
   has_many :film_actors
   has_many :actors, through: :film_actors
