@@ -44,10 +44,6 @@ I use `created_at`/`updated_at`.
 **ⓘ** **Important**: geospacial columns (like `store.location` in the original database) and binary columns
 (like `staff.picture` in the original database) are not implemented, at least yet.
 
-**ⓘ** **Important**: some `belongs_to` and `has_many`
-could be missing due to my inattention, but I'm in process of figuring it out.
-(reference: [Sakila Sample Database  /  Structure  /  Tables](https://dev.mysql.com/doc/sakila/en/sakila-structure-tables.html))
-
 ## TODO:
 
 - [ ] Views
@@ -97,6 +93,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   34. [Cross-reference `Inventory` with `Store` and `Rental`](#cross-reference-inventory-with-store-and-rental)
   35. [Cross-reference `Payment` with `Rental` and `Staff`](#cross-reference-payment-with-rental-and-staff)
   36. [Cross-reference `Rental` with `Customer` and `Staff`](#cross-reference-rental-with-customer-and-staff)
+  37. [Reference `Store` in `Address`](#reference-store-in-address)
 
   ### Create `Actor`
 
@@ -791,5 +788,13 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 
   ```diff
   + has_many :rentals
+  ```
+
+  ### Reference `Store` in `Address`
+
+  In `models/address.rb`:
+
+  ```diff
+  + has_one :store
   ```
 </details>
