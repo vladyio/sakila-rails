@@ -15,8 +15,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (category_id => categories.id)
-#  fk_rails_...  (film_id => films.id)
+#  fk_rails_...  (category_id => categories.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (film_id => films.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class FilmCategory < ApplicationRecord
   belongs_to :film
