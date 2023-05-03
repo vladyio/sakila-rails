@@ -22,4 +22,5 @@ class Store < ApplicationRecord
   belongs_to :address
   belongs_to :manager_staff, class_name: 'Staff', foreign_key: :manager_staff_id
   has_many :staff
+  has_many :customers
 end

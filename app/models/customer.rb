@@ -24,6 +24,7 @@
 #
 class Customer < ApplicationRecord
   belongs_to :address
+  belongs_to :store
   has_many :payments
 
   validates :first_name, :last_name, presence: true
