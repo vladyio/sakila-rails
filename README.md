@@ -1,21 +1,36 @@
-# Sakila database Rails application
+<div align="center">
+  <h1>Sakila database + Postgres + Rails application</h1>
+</div>
 
-Based on a simplified schema from a great book [Learning SQL by Alan Beaulieu](http://shop.oreilly.com/product/9780596007270.do) (original database is [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/))
+<div align="center">
+  🐘 Postgres · 💎 Ruby 3.2 · 🛤 Rails 7
+</div>
 
-Postgres-based source for inspiration: [fspacek/docker-postgres-sakila](https://github.com/fspacek/docker-postgres-sakila)
+<hr>
+
+Rails application based on a schema and data of the
+[Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), also used in a great book
+[Learning SQL by Alan Beaulieu](http://shop.oreilly.com/product/9780596007270.do)
+
+Postgres-based source for inspiration:
+[fspacek/docker-postgres-sakila](https://github.com/fspacek/docker-postgres-sakila)
 
 # Motivation
 
-The goal was to create a Rails/Postgres application with a schema based on the [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), but (probably) a more simple version of it.
+The goal was to create a Rails/Postgres application with a schema & data from the
+[Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), to practice both
+SQL from the book and Rails with ActiveRecord.
 
 # Setup
 
-1. `bundle install`
-2. `rails db:create`
-3. `rails db:migrate`
-4. `rails db:seed`
+```sh
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-# Current status
+# Important notices
 
 **ⓘ** **Important**: table names are singualar (`actor`, `store`) in the original database, but
 plural in the project (`actors`, `stores`)
@@ -29,29 +44,9 @@ I use `created_at`/`updated_at`.
 **ⓘ** **Important**: geospacial columns (like `store.location` in the original database) and binary columns
 (like `staff.picture` in the original database) are not implemented, at least yet.
 
-## Tables (models):
-
 **ⓘ** **Important**: some `belongs_to` and `has_many`
 could be missing due to my inattention, but I'm in process of figuring it out.
 (reference: [Sakila Sample Database  /  Structure  /  Tables](https://dev.mysql.com/doc/sakila/en/sakila-structure-tables.html))
-
-| Implemented (all done)|
-| ---------------- |
-| actors           |
-| addresses        |
-| categories       |
-| cities           |
-| countries        |
-| customers        |
-| film_actors      |
-| film_categories  |
-| films            |
-| inventories      |
-| languages        |
-| payments         |
-| rentals          |
-| staff            |
-| store            |
 
 ## TODO:
 
@@ -59,6 +54,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 - [ ] Procedures / functions
 - [ ] Triggers (not sure about doing it yet)
 - [ ] Check `ON UPDATE` and `ON DELETE` for existence
+- [x] Tables & Rails models
 
 <details>
   <summary>
