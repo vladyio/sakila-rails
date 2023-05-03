@@ -10,14 +10,17 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  address_id :bigint           not null
+#  store_id   :bigint
 #
 # Indexes
 #
 #  index_customers_on_address_id  (address_id)
+#  index_customers_on_store_id    (store_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (address_id => addresses.id)
+#  fk_rails_...  (store_id => stores.id)
 #
 class Customer < ApplicationRecord
   belongs_to :address
