@@ -15,8 +15,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (address_id => addresses.id)
-#  fk_rails_...  (manager_staff_id => staff.id)
+#  fk_rails_...  (address_id => addresses.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (manager_staff_id => staff.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class Store < ApplicationRecord
   belongs_to :address

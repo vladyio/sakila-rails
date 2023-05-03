@@ -5,7 +5,7 @@ class AddCascadingToRental < ActiveRecord::Migration[7.0]
                                           on_update: :cascade
 
     remove_foreign_key :rentals, :inventories
-    add_foreign_key :rentals, :inventories, index: true, on_delete: :restrict,
+    add_foreign_key :rentals, :inventories, null: false, index: true, on_delete: :restrict,
                                             on_update: :cascade
 
     remove_foreign_key :rentals, :staff
