@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_111107) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_112258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,8 +133,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_111107) do
     t.datetime "payment_date", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "staff_id", null: false
     t.index ["customer_id"], name: "index_payments_on_customer_id"
     t.index ["rental_id"], name: "index_payments_on_rental_id"
+    t.index ["staff_id"], name: "index_payments_on_staff_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -188,6 +190,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_111107) do
   add_foreign_key "inventories", "stores"
   add_foreign_key "payments", "customers"
   add_foreign_key "payments", "rentals"
+  add_foreign_key "payments", "staff"
   add_foreign_key "rentals", "customers"
   add_foreign_key "rentals", "inventories"
   add_foreign_key "rentals", "staff"

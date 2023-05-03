@@ -86,6 +86,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 25. [Remove uniqueness index from `city`](#remove-uniqueness-index-from-city)
 26. [Add `store_id` to `Inventory`](#add-store_id-to-inventory)
 27. [Add `staff_id` to `rentas`](#add-staff_id-to-rentas)
+28. [Add `staff_id` to `Payments`](#add-staff_id-to-payments)
 
 ### Create `Actor`
 
@@ -652,4 +653,10 @@ Missed a reference of `store_id` in `customers`:
 
 ```ruby
    add_reference :rentals, :staff, null: false, foreign_key: { to_table: :staff }
+```
+
+### Add `staff_id` to `Payments`
+
+```ruby
+  add_reference :payments, :staff, null: false, foreign_key: { to_table: :staff }
 ```
