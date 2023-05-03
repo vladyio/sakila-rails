@@ -28,7 +28,7 @@
 #  fk_rails_...  (original_language_id => languages.id)
 #
 class Film < ApplicationRecord
-  has_one :language
+  belongs_to :language
   has_many :film_categories
   has_many :categories, through: :film_categories
   has_many :film_actors
