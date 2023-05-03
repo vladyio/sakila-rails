@@ -67,19 +67,19 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   4. [Create `Film`](#create-film)
   5. [Create `FilmActor`](#create-filmactor)
   6. [Create `FilmCategory`](#create-filmcategory)
-  7. [Bind `Films` with `Actors`, `Films` with `Categories`](#bind-films-with-actors-films-with-categories)
+  7. [Cross-reference `Films` with `Actors`, `Films` with `Categories`](#cross-reference-films-with-actors-films-with-categories)
   8. [Create `Country`](#create-country)
   9. [Create `City`](#create-city)
-  10. [Bind `City` and `Country`](#bind-city-and-country)
+  10. [Cross-reference `City` and `Country`](#cross-reference-city-and-country)
   11. [Create `Address`](#create-address)
-  12. [Bind `Address` and `City`](#bind-address-and-city)
+  12. [Cross-reference `Address` and `City`](#cross-reference-address-and-city)
   13. [Create `Customer`](#create-customer)
-  14. [Bind `Customer` and `Address`](#bind-customer-and-address)
+  14. [Cross-reference `Customer` and `Address`](#cross-reference-customer-and-address)
   15. [Create `Inventory`](#create-inventory)
   16. [Set `Language`.`name` limit to 20](#set-languagename-limit-to-20)
   17. [Create `Rental`](#create-rental)
   18. [Create `Payment`](#create-payment)
-  19. [Bind `Payment` and `Customer`](#bind-payment-and-customer)
+  19. [Cross-reference `Payment` and `Customer`](#cross-reference-payment-and-customer)
   20. [Create `Store`](#create-store)
   21. [Create `Staff`](#create-staff)
   22. [Add `manager_staff` to `Store`](#add-manager_staff-to-store)
@@ -93,6 +93,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   30. [Fix `Film <-> Category` associations in models](#fix-film---category-associations-in-models)
   31. [Fix `Film <-> Language` associations in models](#fix-language---film-associations-in-models)
   32. [Fix `Store <-> Staff` associations in models](#fix-store---staff-associations-in-models)
+  33. [Cross-reference `Store` and `Customer`](#cross-reference-store-and-customer)
 
   ### Create `Actor`
 
@@ -263,7 +264,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
     validates :film, :category, presence: true
   ```
 
-  ### Bind `Films` with `Actors`, `Films` with `Categories`
+  ### Cross-reference `Films` with `Actors`, `Films` with `Categories`
 
   In `models/actor.rb`:
 
@@ -340,7 +341,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
     validates :city, presence: true, uniqueness: true
   ```
 
-  ### Bind `City` and `Country`
+  ### Cross-reference `City` and `Country`
 
   In `models/country.rb`:
 
@@ -380,7 +381,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
     validates :address, :district, :phone, presence: true
   ```
 
-  ### Bind `Address` and `City`
+  ### Cross-reference `Address` and `City`
 
   In `models/city.rb`:
 
@@ -420,7 +421,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
     validates :email, length: { maximum: 50 }
   ```
 
-  ### Bind `Customer` and `Address`
+  ### Cross-reference `Customer` and `Address`
 
   In `models/address.rb`:
 
@@ -521,7 +522,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
     validates :amount, :payment_date, presence: true
   ```
 
-  ### Bind `Payment` and `Customer`
+  ### Cross-reference `Payment` and `Customer`
 
   In `models/customer.rb`:
 
@@ -640,7 +641,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
       remove_index :cities, :city
   ```
 
-  ### Bind `Customer` and `Store`
+  ### Cross-reference `Customer` and `Store`
 
   Missed a reference of `store_id` in `customers`:
 
@@ -718,5 +719,19 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   - has_one :manager_staff, class_name: 'Staff', foreign_key: :manager_staff
   + belongs_to :manager_staff, class_name: 'Staff', foreign_key: :manager_staff_id
   + has_many :staff
+  ```
+
+  ### Cross-reference `Store` and `Customer`
+
+  In `models/store.rb`:
+
+  ```diff
+  + has_many :customers
+  ```
+
+  In `models/customer.rb`:
+
+  ```diff
+  + belongs_to :store
   ```
 </details>
