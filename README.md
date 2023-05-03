@@ -94,6 +94,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   31. [Fix `Film <-> Language` associations in models](#fix-language---film-associations-in-models)
   32. [Fix `Store <-> Staff` associations in models](#fix-store---staff-associations-in-models)
   33. [Cross-reference `Store` and `Customer`](#cross-reference-store-and-customer)
+  34. [Cross-reference `Inventory` with `Store` and `Rental`](#cross-reference-inventory-with-store-and-rental)
 
   ### Create `Actor`
 
@@ -733,5 +734,20 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 
   ```diff
   + belongs_to :store
+  ```
+
+  ### Cross-reference `Inventory` with `Store` and `Rental`
+
+  In `models/inventory.rb`:
+
+  ```diff
+  +  belongs_to :store
+  +  has_many :rentals
+  ```
+
+  In `models/store.rb`:
+
+  ```diff
+  +  has_many :inventories
   ```
 </details>
