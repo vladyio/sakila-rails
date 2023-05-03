@@ -84,6 +84,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 23. [Add `original_language_id` to `Film`](#add-original_language_id-to-film)
 24. [Rename `original_language_id` and `rental_rate` columns](#rename-original_language_id-and-rental_rate-columns)
 25. [Remove uniqueness index from `city`](#remove-uniqueness-index-from-city)
+26. [Add `store_id` to `Inventory`](#add-store_id-to-inventory)
 
 ### Create `Actor`
 
@@ -637,4 +638,11 @@ Missed a reference of `store_id` in `customers`:
 
 ```ruby
     add_reference :customers, :store, foreign_key: true
+```
+
+### Add `store_id` to `Inventory`
+
+```ruby
+  def change
+    add_reference :inventories, :store, null: false, foreign_key: true
 ```
