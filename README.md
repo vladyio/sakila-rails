@@ -96,6 +96,7 @@ could be missing due to my inattention, but I'm in process of figuring it out.
   33. [Cross-reference `Store` and `Customer`](#cross-reference-store-and-customer)
   34. [Cross-reference `Inventory` with `Store` and `Rental`](#cross-reference-inventory-with-store-and-rental)
   35. [Cross-reference `Payment` with `Rental` and `Staff`](#cross-reference-payment-with-rental-and-staff)
+  36. [Cross-reference `Rental` with `Customer` and `Staff`](#cross-reference-rental-with-customer-and-staff)
 
   ### Create `Actor`
 
@@ -770,5 +771,25 @@ could be missing due to my inattention, but I'm in process of figuring it out.
 
   ```diff
   + belongs_to :staff
+  ```
+
+  ### Cross-reference `Rental` with `Customer` and `Staff`
+
+  In `models/rental.rb`:
+
+  ```diff
+  + belongs_to :staff
+  ```
+
+  In `models/customer.rb`:
+
+  ```diff
+  + has_many :rentals
+  ```
+
+  In `models/staff.rb`:
+
+  ```diff
+  + has_many :rentals
   ```
 </details>
