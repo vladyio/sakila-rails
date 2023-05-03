@@ -21,8 +21,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (address_id => addresses.id)
-#  fk_rails_...  (store_id => stores.id)
+#  fk_rails_...  (address_id => addresses.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (store_id => stores.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class Staff < ApplicationRecord
   self.table_name = 'staff'
