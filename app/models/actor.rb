@@ -14,6 +14,7 @@
 #  index_actors_on_last_name   (last_name)
 #
 class Actor < ApplicationRecord
+  has_many :film_actors
   has_many :films, through: :film_actors
 
   validates :first_name, presence: true

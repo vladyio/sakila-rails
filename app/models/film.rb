@@ -30,6 +30,7 @@
 class Film < ApplicationRecord
   has_one :language
   has_many :categories, through: :film_categories
+  has_many :film_actors
   has_many :actors, through: :film_actors
 
   validates :rental_rate, :rental_duration, :replacement_cost,
