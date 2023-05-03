@@ -10,7 +10,7 @@
 #  postal_code :string(10)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  city_id     :bigint
+#  city_id     :bigint           not null
 #
 # Indexes
 #

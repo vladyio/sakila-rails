@@ -14,7 +14,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (country_id => countries.id)
+#  fk_rails_...  (country_id => countries.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class City < ApplicationRecord
   belongs_to :country
