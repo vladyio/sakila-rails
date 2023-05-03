@@ -24,8 +24,8 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (language_id => languages.id)
-#  fk_rails_...  (original_language_id => languages.id)
+#  fk_rails_...  (language_id => languages.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (original_language_id => languages.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class Film < ApplicationRecord
   belongs_to :language
