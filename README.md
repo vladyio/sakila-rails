@@ -630,3 +630,11 @@ Put by mistake, to remove:
 ```ruby
     remove_index :cities, :city
 ```
+
+### Bind `Customer` and `Store`
+
+Missed a reference of `store_id` in `customers`:
+
+```ruby
+    add_reference :customers, :store, foreign_key: true
+```
