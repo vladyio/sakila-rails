@@ -26,6 +26,9 @@ look like `actor.actor_id`, and in this project they look like `actor.id`.
 **ⓘ** **Important**: tables only have `last_update` field in the original database, but in this project
 I use `created_at`/`updated_at`.
 
+**ⓘ** **Important**: geospacial columns (like `store.location` in the original database) and binary columns
+(like `staff.picture` in the original database) are not implemented, at least yet.
+
 ## Tables (models):
 
 **ⓘ** **Important**: some `belongs_to` and `has_many`
