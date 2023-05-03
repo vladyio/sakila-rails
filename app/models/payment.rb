@@ -19,9 +19,9 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (customer_id => customers.id)
-#  fk_rails_...  (rental_id => rentals.id)
-#  fk_rails_...  (staff_id => staff.id)
+#  fk_rails_...  (customer_id => customers.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (rental_id => rentals.id) ON DELETE => restrict ON UPDATE => cascade
+#  fk_rails_...  (staff_id => staff.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class Payment < ApplicationRecord
   belongs_to :customer
