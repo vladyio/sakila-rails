@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_112258) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_162836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,11 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_112258) do
     t.string "address", limit: 50, null: false
     t.string "address2", limit: 50
     t.string "district", limit: 20, null: false
-    t.bigint "city_id", null: false
     t.string "postal_code", limit: 10
     t.string "phone", limit: 20, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "city_id"
     t.index ["city_id"], name: "index_addresses_on_city_id"
   end
 
@@ -176,7 +176,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_112258) do
     t.index ["manager_staff_id"], name: "index_stores_on_manager_staff_id"
   end
 
-  add_foreign_key "addresses", "cities"
+  add_foreign_key "addresses", "cities", on_update: :cascade, on_delete: :restrict
   add_foreign_key "cities", "countries"
   add_foreign_key "customers", "addresses"
   add_foreign_key "customers", "stores"

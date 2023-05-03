@@ -10,7 +10,7 @@
 #  postal_code :string(10)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  city_id     :bigint           not null
+#  city_id     :bigint
 #
 # Indexes
 #
@@ -18,7 +18,7 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (city_id => cities.id)
+#  fk_rails_...  (city_id => cities.id) ON DELETE => restrict ON UPDATE => cascade
 #
 class Address < ApplicationRecord
   belongs_to :city
