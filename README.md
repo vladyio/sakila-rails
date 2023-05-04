@@ -46,6 +46,8 @@ I use `created_at`/`updated_at`.
 
 ## TODO:
 
+- [ ] Rewrite SQL views using [scenic-views/scenic](https://github.com/scenic-views/scenic)
+- [ ] For functions and procedures use [teoljungberg/fx](https://github.com/teoljungberg/fx)
 - [ ] Procedures / functions
 - [ ] Triggers (not sure about doing it yet)
 - [x] Tables & Rails models
