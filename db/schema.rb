@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_145354) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_154201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -212,4 +212,112 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_145354) do
       $function$
   SQL
 
+
+  create_view "actor_info", sql_definition: <<-SQL
+      SELECT a.id,
+      a.first_name,
+      a.last_name,
+      group_concat(DISTINCT (((c.name)::text || ': '::text) || ( SELECT group_concat((f.title)::text) AS group_concat
+             FROM ((films f
+               JOIN film_categories fc_1 ON ((f.id = fc_1.film_id)))
+               JOIN film_actors fa_1 ON ((f.id = fa_1.film_id)))
+            WHERE ((fc_1.category_id = c.id) AND (fa_1.actor_id = a.id))
+            GROUP BY fa_1.actor_id))) AS film_info
+     FROM (((actors a
+       LEFT JOIN film_actors fa ON ((a.id = fa.actor_id)))
+       LEFT JOIN film_categories fc ON ((fa.film_id = fc.film_id)))
+       LEFT JOIN categories c ON ((fc.category_id = c.id)))
+    GROUP BY a.id, a.first_name, a.last_name;
+  SQL
+  create_view "customer_list", sql_definition: <<-SQL
+      SELECT cu.id,
+      (((cu.first_name)::text || ' '::text) || (cu.last_name)::text) AS name,
+      a.address,
+      a.postal_code AS zip_code,
+      a.phone,
+      cities.city,
+      countries.country,
+          CASE
+              WHEN (cu.active = 1) THEN 'active'::text
+              ELSE ''::text
+          END AS notes,
+      cu.store_id AS sid
+     FROM (((customers cu
+       JOIN addresses a ON ((cu.address_id = a.id)))
+       JOIN cities ON ((a.city_id = cities.id)))
+       JOIN countries ON ((cities.country_id = countries.id)));
+  SQL
+  create_view "film_list", sql_definition: <<-SQL
+      SELECT films.id AS fid,
+      films.title,
+      films.description,
+      categories.name AS category,
+      films.rental_rate AS price,
+      films.length,
+      films.rating,
+      group_concat((((actors.first_name)::text || ' '::text) || (actors.last_name)::text)) AS actors
+     FROM ((((categories
+       LEFT JOIN film_categories ON ((categories.id = film_categories.category_id)))
+       LEFT JOIN films ON ((film_categories.film_id = films.id)))
+       JOIN film_actors ON ((films.id = film_actors.film_id)))
+       JOIN actors ON ((film_actors.actor_id = actors.id)))
+    GROUP BY films.id, films.title, films.description, categories.name, films.rental_rate, films.length, films.rating;
+  SQL
+  create_view "nicer_but_slower_film_list", sql_definition: <<-SQL
+      SELECT films.id AS fid,
+      films.title,
+      films.description,
+      categories.name AS category,
+      films.rental_rate AS price,
+      films.length,
+      films.rating,
+      group_concat((((upper("substring"((actors.first_name)::text, 1, 1)) || lower("substring"((actors.first_name)::text, 2))) || upper("substring"((actors.last_name)::text, 1, 1))) || lower("substring"((actors.last_name)::text, 2)))) AS actors
+     FROM ((((categories
+       LEFT JOIN film_categories ON ((categories.id = film_categories.category_id)))
+       LEFT JOIN films ON ((film_categories.film_id = films.id)))
+       JOIN film_actors ON ((films.id = film_actors.film_id)))
+       JOIN actors ON ((film_actors.actor_id = actors.id)))
+    GROUP BY films.id, films.title, films.description, categories.name, films.rental_rate, films.length, films.rating;
+  SQL
+  create_view "sales_by_film_category", sql_definition: <<-SQL
+      SELECT c.name AS category,
+      sum(p.amount) AS total_sales
+     FROM (((((payments p
+       JOIN rentals r ON ((p.rental_id = r.id)))
+       JOIN inventories i ON ((r.inventory_id = i.id)))
+       JOIN films f ON ((i.film_id = f.id)))
+       JOIN film_categories fc ON ((f.id = fc.film_id)))
+       JOIN categories c ON ((fc.category_id = c.id)))
+    GROUP BY c.name
+    ORDER BY (sum(p.amount)) DESC;
+  SQL
+  create_view "sales_by_store", sql_definition: <<-SQL
+      SELECT (((c.city)::text || ','::text) || (cy.country)::text) AS store,
+      (((m.first_name)::text || ' '::text) || (m.last_name)::text) AS manager,
+      sum(p.amount) AS total_sales
+     FROM (((((((payments p
+       JOIN rentals r ON ((p.rental_id = r.id)))
+       JOIN inventories i ON ((r.inventory_id = i.id)))
+       JOIN stores s ON ((i.store_id = s.id)))
+       JOIN addresses a ON ((s.address_id = a.id)))
+       JOIN cities c ON ((a.city_id = c.id)))
+       JOIN countries cy ON ((c.country_id = cy.id)))
+       JOIN staff m ON ((s.manager_staff_id = m.id)))
+    GROUP BY cy.country, c.city, s.id, m.first_name, m.last_name
+    ORDER BY cy.country, c.city;
+  SQL
+  create_view "staff_list", sql_definition: <<-SQL
+      SELECT s.id,
+      (((s.first_name)::text || ' '::text) || (s.last_name)::text) AS name,
+      a.address,
+      a.postal_code AS zip_code,
+      a.phone,
+      cities.city,
+      countries.country,
+      s.id AS sid
+     FROM (((staff s
+       JOIN addresses a ON ((s.address_id = a.id)))
+       JOIN cities ON ((a.city_id = cities.id)))
+       JOIN countries ON ((cities.country_id = countries.id)));
+  SQL
 end

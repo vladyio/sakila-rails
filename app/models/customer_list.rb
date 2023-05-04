@@ -11,7 +11,7 @@
 #  notes    :text
 #  phone    :string(20)
 #  sid      :bigint
-#  zip code :string(10)
+#  zip_code :string(10)
 #
 # SQL View customer_list
 class CustomerList < ApplicationRecord
