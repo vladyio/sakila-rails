@@ -1,0 +1,17 @@
+class CreateView<%= file_name.camelize %> < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+  def change
+    reversible do |direction|
+      direction.up do
+        execute <<~SQL
+        SQL
+      end
+
+      direction.down do
+        execute <<~SQL
+          DROP VIEW IF EXISTS public.<%= file_name.underscore %>
+        SQL
+      end
+    end
+  end
+end
+

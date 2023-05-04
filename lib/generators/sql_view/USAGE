@@ -1,0 +1,10 @@
+Description:
+    Generates a reversible migration that creates an SQL view together
+    with an Active Record model
+
+Example:
+    bin/rails generate sql_view FilmList
+
+    This will create:
+        db/migrate/20500505101112_create_view_film_list
+        models/film_list.rb
