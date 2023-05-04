@@ -46,18 +46,11 @@ I use `created_at`/`updated_at`.
 
 ## TODO:
 
-- [ ] Views
-  - [x] `actor_info` (`ActorInfo` model)
-  - [x] `customer_list` (`CustomerList` model)
-  - [x] `film_list` (`FilmList` model)
-  - [x] `nicer_but_slower_film_list`
-  - [x] `sales_by_film_category`
-  - [x] `sales_by_store`
-  - [ ] `staff_list`
 - [ ] Procedures / functions
 - [ ] Triggers (not sure about doing it yet)
-- [x] Check `ON UPDATE` and `ON DELETE` for existence
 - [x] Tables & Rails models
+- [x] Views
+- [x] Check `ON UPDATE` and `ON DELETE` for existence
 
 <details>
   <summary>
