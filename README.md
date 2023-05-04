@@ -50,7 +50,7 @@ I use `created_at`/`updated_at`.
   - [x] `actor_info` (`ActorInfo` model)
   - [x] `customer_list` (`CustomerList` model)
   - [x] `film_list` (`FilmList` model)
-  - [ ] `nicer_but_slower_film_list`
+  - [x] `nicer_but_slower_film_list`
   - [ ] `sales_by_film_category`
   - [ ] `sales_by_store`
   - [ ] `staff_list`
