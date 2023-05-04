@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_175258) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_145354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -198,4 +198,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_03_175258) do
   add_foreign_key "staff", "stores", on_update: :cascade, on_delete: :restrict
   add_foreign_key "stores", "addresses", on_update: :cascade, on_delete: :restrict
   add_foreign_key "stores", "staff", column: "manager_staff_id", on_update: :cascade, on_delete: :restrict
+  create_function :_group_concat, sql_definition: <<-'SQL'
+      CREATE OR REPLACE FUNCTION public._group_concat(text, text)
+       RETURNS text
+       LANGUAGE sql
+       IMMUTABLE
+      AS $function$
+      SELECT CASE
+        WHEN $2 IS NULL THEN $1
+        WHEN $1 IS NULL THEN $2
+        ELSE $1 || ', ' || $2
+      END
+      $function$
+  SQL
+
 end
