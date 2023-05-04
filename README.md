@@ -48,12 +48,15 @@ I use `created_at`/`updated_at`.
 [scenic](https://github.com/scenic-views/scenic) and [fx](https://github.com/teoljungberg/fx)
 gems. Migrations look nicer, but I don't like external files for each SQL piece 🥲.
 
-I created by own SQL view migration/model generator, it's here:
+Before I found out about those two, I created by own SQL view migration/model generator,
+it's here:
 [lib/generators/sql_view](https://github.com/vladyio/sakila-rails/tree/main/lib/generators/sql_view)
 
 ## TODO:
 
-- [ ] Procedures / functions
+- [ ] Procedures / functions:
+  - [x] `inventory_in_stock`
+  - [x] `inventory_held_by_customer`
 - [ ] Triggers (not sure about doing it yet)
 - [x] Tables & Rails models
 - [x] Views
