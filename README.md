@@ -51,7 +51,7 @@ I use `created_at`/`updated_at`.
   - [x] `customer_list` (`CustomerList` model)
   - [x] `film_list` (`FilmList` model)
   - [x] `nicer_but_slower_film_list`
-  - [ ] `sales_by_film_category`
+  - [x] `sales_by_film_category`
   - [ ] `sales_by_store`
   - [ ] `staff_list`
 - [ ] Procedures / functions
