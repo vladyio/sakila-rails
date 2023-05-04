@@ -1,3 +1,4 @@
+# -*- SkipSchemaAnnotations
 # == Schema Information
 #
 # Table name: actor_info
