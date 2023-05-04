@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_154201) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_161434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -210,6 +210,38 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_154201) do
         ELSE $1 || ', ' || $2
       END
       $function$
+  SQL
+  create_function :inventory_in_stock, sql_definition: <<-'SQL'
+      CREATE OR REPLACE FUNCTION public.inventory_in_stock(p_inventory_id integer)
+       RETURNS boolean
+       LANGUAGE plpgsql
+      AS $function$
+      DECLARE
+          v_rentals INTEGER;
+          v_out     INTEGER;
+      BEGIN
+          -- AN ITEM IS IN-STOCK IF THERE ARE EITHER NO ROWS IN THE rental TABLE
+          -- FOR THE ITEM OR ALL ROWS HAVE return_date POPULATED
+
+          SELECT count(*) INTO v_rentals
+          FROM rental
+          WHERE inventory_id = p_inventory_id;
+
+          IF v_rentals = 0 THEN
+            RETURN TRUE;
+          END IF;
+
+          SELECT COUNT(rental_id) INTO v_out
+          FROM inventory LEFT JOIN rental USING(inventory_id)
+          WHERE inventory.inventory_id = p_inventory_id
+          AND rental.return_date IS NULL;
+
+          IF v_out > 0 THEN
+            RETURN FALSE;
+          ELSE
+            RETURN TRUE;
+          END IF;
+      END $function$
   SQL
 
 
