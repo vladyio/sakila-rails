@@ -44,6 +44,13 @@ I use `created_at`/`updated_at`.
 **ⓘ** **Important**: geospacial columns (like `store.location` in the original database) and binary columns
 (like `staff.picture` in the original database) are not implemented, at least yet.
 
+**ⓘ** Views and functions/triggers are dumped to `schema.rb` with the help of
+[scenic](https://github.com/scenic-views/scenic) and [fx](https://github.com/teoljungberg/fx)
+gems. Migrations look nicer, but I don't like external files for each SQL piece 🥲.
+
+I created by own SQL view migration/model generator, it's here:
+[lib/generators/sql_view](https://github.com/vladyio/sakila-rails/tree/main/lib/generators/sql_view)
+
 ## TODO:
 
 - [ ] Procedures / functions
