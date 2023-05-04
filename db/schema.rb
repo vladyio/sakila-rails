@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_161434) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_161635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -224,23 +224,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_161434) do
           -- FOR THE ITEM OR ALL ROWS HAVE return_date POPULATED
 
           SELECT count(*) INTO v_rentals
-          FROM rental
+          FROM rentals
           WHERE inventory_id = p_inventory_id;
 
           IF v_rentals = 0 THEN
             RETURN TRUE;
           END IF;
 
-          SELECT COUNT(rental_id) INTO v_out
-          FROM inventory LEFT JOIN rental USING(inventory_id)
-          WHERE inventory.inventory_id = p_inventory_id
-          AND rental.return_date IS NULL;
+          SELECT COUNT(rentals.id) INTO v_out
+          FROM inventories LEFT JOIN rentals ON inventories.id = rentals.inventory_id
+          WHERE inventories.id = p_inventory_id
+          AND rentals.return_date IS NULL;
 
           IF v_out > 0 THEN
             RETURN FALSE;
           ELSE
             RETURN TRUE;
           END IF;
+      END $function$
+  SQL
+  create_function :inventory_held_by_customer, sql_definition: <<-'SQL'
+      CREATE OR REPLACE FUNCTION public.inventory_held_by_customer(p_inventory_id integer)
+       RETURNS integer
+       LANGUAGE plpgsql
+      AS $function$
+      DECLARE
+          v_customer_id INTEGER;
+      BEGIN
+
+        SELECT customer_id INTO v_customer_id
+        FROM rentals
+        WHERE return_date IS NULL
+        AND inventory_id = p_inventory_id;
+
+        RETURN v_customer_id;
       END $function$
   SQL
 
