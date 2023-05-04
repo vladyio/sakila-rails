@@ -48,7 +48,7 @@ I use `created_at`/`updated_at`.
 
 - [ ] Views
   - [x] `actor_info` (`ActorInfo` model)
-  - [ ] `customer_list`
+  - [x] `customer_list` (`CustomerList` model)
   - [ ] `film_list`
   - [ ] `nicer_but_slower_film_list`
   - [ ] `sales_by_film_category`
