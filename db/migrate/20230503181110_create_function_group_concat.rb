@@ -1,5 +1,5 @@
 class CreateFunctionGroupConcat < ActiveRecord::Migration[7.0]
-  def change
+  def up
     # Source: https://github.com/fspacek/docker-postgres-sakila/blob/master/step_1.sql#L89-L109
     execute <<-SQL
       CREATE FUNCTION _group_concat(text, text) RETURNS text
@@ -16,6 +16,13 @@ class CreateFunctionGroupConcat < ActiveRecord::Migration[7.0]
           SFUNC = _group_concat,
           STYPE = text
       );
+    SQL
+  end
+
+  def down
+    execute <<-SQL
+      DROP AGGREGATE IF EXISTS group_concat(text);
+      DROP FUNCTION IF EXISTS _group_concat;
     SQL
   end
 end
