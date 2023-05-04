@@ -17,6 +17,8 @@ Postgres-based source for inspiration:
 
 # Motivation
 
+[![wakatime](https://wakatime.com/badge/user/62e83c61-8cbf-470b-b233-c283d28e2900/project/e68cb805-b2b1-4da6-8ed0-ccbacddeb93e.svg)](https://wakatime.com/badge/user/62e83c61-8cbf-470b-b233-c283d28e2900/project/e68cb805-b2b1-4da6-8ed0-ccbacddeb93e)
+
 The goal was to create a Rails/Postgres application with a schema & data from the
 [Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/), to practice both
 SQL from the book and Rails with ActiveRecord.
