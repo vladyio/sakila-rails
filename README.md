@@ -47,6 +47,13 @@ I use `created_at`/`updated_at`.
 ## TODO:
 
 - [ ] Views
+  - [x] `actor_info` (`ActorInfo` model)
+  - [ ] `customer_list`
+  - [ ] `film_list`
+  - [ ] `nicer_but_slower_film_list`
+  - [ ] `sales_by_film_category`
+  - [ ] `sales_by_store`
+  - [ ] `staff_list`
 - [ ] Procedures / functions
 - [ ] Triggers (not sure about doing it yet)
 - [x] Check `ON UPDATE` and `ON DELETE` for existence
