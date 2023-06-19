@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
+require "#{Rails.root}/app/views/components/films/item"
+
 class Dashboard::IndexView < ApplicationView
+  def initialize(films)
+    @films = films
+  end
+
   def template
-    h1 { "Dashboard index" }
-    p { "Find me in app/views/dashboard/index_view.rb" }
+    @films.each { |film| render Components::Film.new(film) }
   end
 end

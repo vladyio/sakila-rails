@@ -2,8 +2,9 @@
 
 class DashboardController < ApplicationController
   layout -> { ApplicationLayout }
-  
+
   def index
-    render Dashboard::IndexView.new
+    @films = Film.all.take(10)
+    render Dashboard::IndexView.new(@films)
   end
 end
