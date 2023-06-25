@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.join(Rails.root, 'app/views/components/dashboard/sidebar')
+require File.join(Rails.root, 'app/views/components/dashboard_sidebar')
 require File.join(Rails.root, 'app/views/components/films/item')
 
 class Dashboard::IndexView < ApplicationView
@@ -10,7 +10,7 @@ class Dashboard::IndexView < ApplicationView
   end
 
   def template
-    render Views::Components::Dashboard::Sidebar.new(@models)
+    render Views::Components::DashboardSidebar.new(@models)
 
     div(class: 'h-full ml-[235px] grid md:grid-cols-3 gap-1') do
       @collection.each { |item| render dashboard_component(item.class, item) }
