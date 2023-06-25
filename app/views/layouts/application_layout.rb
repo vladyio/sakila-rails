@@ -18,7 +18,7 @@ class ApplicationLayout < ApplicationView
       end
 
       body do
-        main(class: 'h-full w-full bg-blue-900 grid md:grid-cols-3 gap-1', &block)
+        main(class: 'h-full w-full bg-blue-900', &block)
       end
     end
   end
