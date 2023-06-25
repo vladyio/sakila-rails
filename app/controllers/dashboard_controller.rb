@@ -9,8 +9,19 @@ class DashboardController < ApplicationController
   layout -> { ApplicationLayout }
 
   def index
-    @films = Film.all.sample(10)
+    @collection = collection_model.all.sample(10)
     @dashboard_models = DASHBOARD_MODELS.sort
-    render Dashboard::IndexView.new(collection: @films, models: @dashboard_models)
+
+    render Dashboard::IndexView.new(collection: @collection, models: @dashboard_models)
+  end
+
+  private
+
+  def dashboard_params
+    params.permit(:model)
+  end
+
+  def collection_model
+    dashboard_params[:model].constantize
   end
 end
