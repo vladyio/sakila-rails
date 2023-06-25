@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require "#{Rails.root}/app/views/components/films/item"
+require File.join(Rails.root, 'app/views/components/films/item')
 
 class Dashboard::IndexView < ApplicationView
   def initialize(films)
