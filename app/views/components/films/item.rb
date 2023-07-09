@@ -1,6 +1,6 @@
 module Views
   module Components
-    class Film < ApplicationComponent
+    class Films::Item < ApplicationComponent
       def initialize(film)
         @title = film.title
         @rating = film.rating

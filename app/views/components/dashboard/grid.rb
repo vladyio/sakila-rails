@@ -14,7 +14,7 @@ module Views
       end
 
       def grid_component(model, item)
-        "Views::Components::#{model}".constantize.new(item)
+        "#{model.to_s.pluralize}::Item".constantize.new(item)
       end
     end
   end

@@ -23,6 +23,7 @@ module SakilaRails
     config.autoload_paths << Rails.root.join('app/views')
     config.autoload_paths << Rails.root.join('app/views/components')
     config.autoload_paths << Rails.root.join('app/views/layouts')
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

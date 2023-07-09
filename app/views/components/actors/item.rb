@@ -1,6 +1,6 @@
 module Views
   module Components
-    class Actor < ApplicationComponent
+    class Actors::Item < ApplicationComponent
       def initialize(actor)
         @first_name = actor.first_name
         @last_name = actor.last_name
