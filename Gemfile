@@ -25,6 +25,7 @@ end
 
 group :development do
   gem 'rubocop'
+  gem 'rubocop-rails', require: false
   gem 'solargraph'
   gem 'web-console'
 end
