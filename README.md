@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  🐘 Postgres · 💎 Ruby 3.2 · 🛤 Rails 7
+  🐘 Postgres · 💎 Ruby 3.2 · 🛤 Rails 7 · <img src="https://avatars.githubusercontent.com/u/111233186?s=22&v=4"> <a href="https://github.com/phlex-ruby/phlex">Phlex</a>
 </div>
 
 <hr>
