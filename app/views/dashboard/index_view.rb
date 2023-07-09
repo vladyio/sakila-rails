@@ -3,6 +3,7 @@
 require Rails.root.join('app/views/components/dashboard_sidebar')
 require Rails.root.join('app/views/components/dashboard_sidebar_item')
 require Rails.root.join('app/views/components/films/item')
+require Rails.root.join('app/views/components/actors/item')
 
 class Dashboard::IndexView < ApplicationView
   def initialize(collection:, models:)
