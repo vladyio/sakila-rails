@@ -8,3 +8,6 @@ Style/Documentation:
 Metrics/MethodLength:
   Exclude:
     - 'app/views/layouts/application_layout.rb'
+
+Lint/MissingSuper:
+  Enabled: false
