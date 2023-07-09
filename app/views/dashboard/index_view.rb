@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require File.join(Rails.root, 'app/views/components/dashboard_sidebar')
+require File.join(Rails.root, 'app/views/components/dashboard_sidebar_item')
 require File.join(Rails.root, 'app/views/components/films/item')
 
 class Dashboard::IndexView < ApplicationView
