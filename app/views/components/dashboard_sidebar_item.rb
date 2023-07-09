@@ -9,9 +9,8 @@ module Views
 
       def template(&)
         li(class: 'relative') do
-          a(class: 'navbar--item', href: helpers.root_path(model: @model)) do
-            span { @model }
-          end
+          a(class: 'navbar--item', href: helpers.root_path(model: @model),
+            data: { turbo_stream: true }) { @model }
         end
       end
     end
