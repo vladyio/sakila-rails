@@ -10,10 +10,11 @@ gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
 gem 'phlex-rails'
 gem 'puma', '~> 6.3'
-gem 'rails', '~> 7.0.5'
+gem 'rails', '~> 7.0.6'
 gem 'scenic', '~> 1.7'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'tailwindcss-rails', '~> 2.0'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -26,11 +27,4 @@ group :development do
   gem 'rubocop'
   gem 'solargraph'
   gem 'web-console'
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
 end
-
-gem "tailwindcss-rails", "~> 2.0"
