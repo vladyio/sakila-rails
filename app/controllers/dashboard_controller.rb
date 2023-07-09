@@ -12,7 +12,7 @@ class DashboardController < ApplicationController
 
   # rubocop:disable Metrics/MethodLength
   def index
-    @collection = collection_model.all.sample(10)
+    @collection = collection_model.all.sample(20)
     @dashboard_models = DASHBOARD_MODELS.sort
 
     respond_to do |format|
