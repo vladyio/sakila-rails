@@ -2,7 +2,7 @@
 
 module Views
   module Components
-    class DashboardSidebar::Item < ApplicationComponent
+    class Dashboard::SidebarItem < ApplicationComponent
       def initialize(model)
         @model = model
       end

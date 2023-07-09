@@ -2,7 +2,7 @@
 
 module Views
   module Components
-    class DashboardGrid < ApplicationComponent
+    class Dashboard::Grid < ApplicationComponent
       def initialize(collection)
         @collection = collection
       end

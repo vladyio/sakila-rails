@@ -22,7 +22,7 @@ class DashboardController < ApplicationController
 
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
-          'items', Views::Components::DashboardGrid.new(@collection)
+          'items', Dashboard::Grid.new(@collection)
         )
       end
     end

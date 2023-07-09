@@ -2,7 +2,7 @@
 
 module Views
   module Components
-    class DashboardSidebar < ApplicationComponent
+    class Dashboard::Sidebar < ApplicationComponent
       def initialize(models)
         @models = models
       end
@@ -11,7 +11,7 @@ module Views
         nav(class: 'navbar inline') do
           ul(class: 'relative m-0 list-none px-[0.2rem] w-full') do
             @models.each do |model|
-              render DashboardSidebar::Item.new(model)
+              render Dashboard::SidebarItem.new(model)
             end
           end
         end
