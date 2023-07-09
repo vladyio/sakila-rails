@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 @layer components {
-  .film-card {
+  .item-card {
     @apply m-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:border hover:border-indigo-300;
   }
 
-  .film-card--title {
+  .item-card--title {
     @apply mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-indigo-500;
   }
 
-  .film-card--rating {
+  .item-card--rating {
     @apply dark:text-white bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300;
   }
 
-  .film-card--description {
+  .item-card--description {
     @apply font-normal text-gray-700 dark:text-gray-400;
   }
 

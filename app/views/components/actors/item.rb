@@ -7,8 +7,8 @@ module Views
       end
 
       def template(&)
-        a(class: 'film-card group') do
-          h1(class: 'film-card--title') { "#{@first_name} #{@last_name}" }
+        a(class: 'item-card group') do
+          h1(class: 'item-card--title') { "#{@first_name} #{@last_name}" }
         end
       end
     end

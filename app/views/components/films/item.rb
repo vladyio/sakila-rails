@@ -8,10 +8,10 @@ module Views
       end
 
       def template(&)
-        a(class: 'film-card group') do
-          h1(class: 'film-card--title') { @title }
-          span(class: 'film-card--rating inline-flex my-3 py-2') { "Rating: #{@rating}" }
-          p(class: 'film-card--description') { @description }
+        a(class: 'item-card group') do
+          h1(class: 'item-card--title') { @title }
+          span(class: 'item-card--rating inline-flex my-3 py-2') { "Rating: #{@rating}" }
+          p(class: 'item-card--description') { @description }
         end
       end
     end
