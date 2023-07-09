@@ -8,7 +8,7 @@ module Views
       end
 
       def template
-        div(id: 'items', class: 'h-full ml-[235px] grid md:grid-cols-3 gap-1') do
+        div(id: 'items', class: 'h-full min-h-screen ml-[235px] grid md:grid-cols-3 gap-1') do
           @collection.each { |item| render grid_component(item.class, item) }
         end
       end
