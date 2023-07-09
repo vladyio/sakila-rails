@@ -20,7 +20,7 @@
   }
 
   .navbar {
-    @apply fixed left-0 top-0 z-[1035] h-full w-60 bg-zinc-800;
+    @apply fixed left-0 top-0 z-[1035] h-full w-60 bg-zinc-900;
   }
 
   .navbar--item {

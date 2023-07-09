@@ -8,9 +8,9 @@ module Views
       end
 
       def template(&)
-        li(class: 'relative') do
+        li(class: 'relative mb-1') do
           a(class: 'navbar--item', href: helpers.root_path(model: @model),
-            data: { turbo_stream: true }) { @model }
+            data: { turbo_stream: true }) { @model.pluralize }
         end
       end
     end
