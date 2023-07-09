@@ -3,3 +3,8 @@ require: rubocop-rails
 Style/Documentation:
   Exclude:
     - 'app/controllers/**/*.rb'
+    - 'app/views/layouts/application_layout.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/views/layouts/application_layout.rb'
