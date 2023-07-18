@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
     Customer Country City Category Address Actor
   ].freeze
 
-  FALLBACK_MODEL = 'Film'
+  FALLBACK_MODEL = Film
 
   layout -> { ApplicationLayout }
 
@@ -35,7 +35,10 @@ class DashboardController < ApplicationController
   end
 
   def collection_model
-    model = dashboard_params[:model] || FALLBACK_MODEL
+    model = dashboard_params[:model]
+
+    return FALLBACK_MODEL unless DASHBOARD_MODELS.include?(model)
+
     model.constantize
   end
 end
