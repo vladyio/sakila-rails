@@ -8,8 +8,6 @@ class DashboardController < ApplicationController
 
   FALLBACK_MODEL = Film
 
-  layout -> { ApplicationLayout }
-
   # rubocop:disable Metrics/MethodLength
   def index
     @collection = collection_model.all.sample(20)
