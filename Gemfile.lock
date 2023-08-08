@@ -136,6 +136,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
+    pagy (6.0.4)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -236,7 +237,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.2.1)
+    stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.30-arm64-darwin)
       railties (>= 6.0.0)
@@ -274,6 +275,7 @@ DEPENDENCIES
   debug
   fx (~> 0.8.0)
   jsbundling-rails
+  pagy
   pg (~> 1.1)
   phlex-rails
   puma (~> 6.3)

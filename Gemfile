@@ -7,6 +7,7 @@ gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'fx', '~> 0.8.0'
 gem 'jsbundling-rails'
+gem 'pagy'
 gem 'pg', '~> 1.1'
 gem 'phlex-rails'
 gem 'puma', '~> 6.3'
