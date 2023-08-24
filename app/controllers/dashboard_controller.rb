@@ -9,7 +9,7 @@ class DashboardController < ApplicationController
   ].freeze
 
   FALLBACK_MODEL = Film
-  ITEMS_PER_PAGE = 20
+  ITEMS_PER_PAGE = 21
 
   # rubocop:disable Metrics/MethodLength
   def index

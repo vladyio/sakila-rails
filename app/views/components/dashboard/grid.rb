@@ -12,16 +12,16 @@ module Views
 
       # rubocop:disable Metrics/MethodLength
       def template
-        div(id: 'items', class: 'h-full min-h-screen ml-[235px] grid md:grid-cols-3 gap-1') do
+        div(id: 'items', class: 'h-full min-h-screen ml-[235px]') do
           turbo_frame_tag("collection_#{@pagy.page}") do
-            @collection.each { |item| render grid_component(item.class, item) }
+            div(class: 'grid md:grid-cols-3') do
+              @collection.each { |item| render grid_component(item.class, item) }
+            end
 
             unless @pagy.page == @pagy.pages
               turbo_frame_tag("collection_#{@pagy.next}",
                               src: helpers.dashboard_index_path(page: @pagy.next, model: collection_class),
-                              loading: 'lazy') do
-                div { 'Loading...' }
-              end
+                              loading: 'lazy')
             end
           end
         end
