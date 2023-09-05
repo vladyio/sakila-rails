@@ -142,7 +142,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    pg (1.5.3)
+    pg (1.5.4)
     phlex (1.8.1)
       concurrent-ruby (~> 1.2)
       erb (>= 4)
@@ -278,7 +278,7 @@ DEPENDENCIES
   fx (~> 0.8.0)
   jsbundling-rails
   pagy
-  pg (~> 1.1)
+  pg (~> 1.5)
   phlex-rails
   puma (~> 6.3)
   rails (~> 7.0.6)
